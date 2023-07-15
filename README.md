@@ -9,13 +9,15 @@
 Cada TDA se encuentra en su propia clase, con métodos y funcionalidades específicas. A continuación, se proporciona una breve descripción de cada TDA.
 
 - Árbol Binario de Búsqueda (ABB)  
-  El TDA Árbol Binario de Búsqueda (ABB) implementa un árbol binario en el cual los valores se organizan de forma ordenada. Permite realizar operaciones como inserción, eliminación y búsqueda de elementos.
+  Implementa un árbol binario en el cual los valores se organizan de forma ordenada. Permite realizar operaciones como inserción, eliminación y búsqueda de elementos.
 
 - Vector  
-  El TDA Vector implementa un arreglo dinámico de elementos, con la capacidad de redimensionarse automáticamente cuando sea necesario.
+  Implementa un arreglo dinámico de elementos, con la capacidad de redimensionarse automáticamente cuando sea necesario.
 
 - Lista Simplemente Enlazada  
-  El TDA Lista Simplemente Enlazada implementa una lista enlazada donde cada elemento tiene un puntero al siguiente elemento.
+  Implementa una lista enlazada donde cada nodo tiene un puntero al nodo siguiente.
 
  - Lista Doblemente Enlazada  
-   El TDA Lista Doblemente Enlazada implementa una lista enlazada donde cada elemento tiene un puntero al siguiente y al elemento anterior.
+   Implementa una lista enlazada donde cada nodo tiene un puntero al nodo siguiente y al nodo anterior.
+
+*Nota: Todos los TDA están implementados como templates.

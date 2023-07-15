@@ -9,7 +9,7 @@
 Cada TDA se encuentra en su propia clase, con métodos y funcionalidades específicas. A continuación, se proporciona una breve descripción de cada TDA.
 
 - Árbol Binario de Búsqueda (ABB)  
-  Implementa un árbol binario en el cual los valores se organizan de forma ordenada. Permite realizar operaciones como inserción, eliminación y búsqueda de elementos.
+  Implementa un árbol binario el cual permite realizar una busqueda con mayor eficacia. Permite realizar operaciones como inserción, eliminación y búsqueda de elementos.
 
 - Vector  
   Implementa un arreglo dinámico de elementos, con la capacidad de redimensionarse automáticamente cuando sea necesario.

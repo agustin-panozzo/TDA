@@ -5,6 +5,7 @@
 - Vector
 - Lista Simplemente Enlazada
 - Lista Doblemente Enlazada
+- Pila
   
 Cada TDA se encuentra en su propia clase, con métodos y funcionalidades específicas. A continuación, se proporciona una breve descripción de cada TDA.
 

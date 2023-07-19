@@ -6,6 +6,7 @@
 - Lista Simplemente Enlazada
 - Lista Doblemente Enlazada
 - Pila
+- Cola
   
 Cada TDA se encuentra en su propia clase, con métodos y funcionalidades específicas. A continuación, se proporciona una breve descripción de cada TDA.
 
@@ -23,6 +24,9 @@ Cada TDA se encuentra en su propia clase, con métodos y funcionalidades especí
   referencias al nodo siguiente y al anterior.
 
 - Pila  
-  Es una estructura de datos lineal que sigue el principio de LIFO (Last In, First Out), es decir, el último elemento que se inserta en la pila es el primero en ser eliminado
+  Es una estructura de datos lineal que sigue el principio de LIFO (Last In, First Out), es decir, el último elemento que se inserta en la pila es el primero en ser eliminado.
+
+- Cola  
+  Es una estructura de datos en la que los elementos se organizan en orden secuencial, siguiendo una política de "primero en entrar, primero en salir" (FIFO, por sus siglas en inglés: First-In, First-Out).
 
 *Nota: Todos los TDA están implementados como templates.

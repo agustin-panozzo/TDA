@@ -1,8 +1,6 @@
 #ifndef COLA_H
 #define COLA_H
 
-#include "Cliente.h"
-
 const int TAMANIO_INICIAL = 10;
 
 template <typename Tipo>

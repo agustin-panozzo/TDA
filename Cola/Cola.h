@@ -17,7 +17,8 @@ class Cola{
 
     public:
         Cola();
-        explicit Cola(int capacidad);
+
+        Cola(int capacidad);
 
         void encolar(Tipo elemento);
 

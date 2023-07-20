@@ -30,7 +30,7 @@ Cada TDA se encuentra en su propia clase, con métodos y funcionalidades especí
 - Cola  
   Es una estructura de datos en la que los elementos se organizan en orden secuencial, siguiendo una política de "primero en entrar, primero en salir" (FIFO, por sus siglas en inglés: First-In, First-Out).
 
-- Lista Circular
+- Lista Circular  
   Es una estructura de datos que representa una lista enlazada donde el último nodo apunta al primer nodo, cerrando el ciclo y formando así una estructura circular.
-  
+
 *Nota: Todos los TDA están implementados como templates.

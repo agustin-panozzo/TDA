@@ -2,6 +2,7 @@
 #define LISTA_H
 
 #include "NodoLista.h"
+#include "Cursor.h"
 #include <iostream>
 
 template <typename Tipo>
@@ -9,6 +10,7 @@ class LDE{
     private:
         NodoLista<Tipo>* primero;
         NodoLista<Tipo>* ultimo;
+        Cursor<Tipo> cursor;
         int tamanio;
 
         NodoLista<Tipo>* obtener_nodo(int indice);
@@ -30,15 +32,25 @@ class LDE{
 
         int obtener_tamanio();
 
+        void insertar_cursor(Tipo elemento);
+
+        void eliminar_cursor();
+
+        void siguiente();
+
+        void anterior();
+
+        void inicio();
+
+        void final();
+
+        Tipo elemento_cursor();
+
         ~LDE();
 };
 
 template <typename Tipo>
-LDE<Tipo>::LDE() {
-    this -> primero = nullptr;
-    this -> ultimo = nullptr;
-    this -> tamanio = 0;
-}
+LDE<Tipo>::LDE() : primero(nullptr), ultimo(nullptr), cursor(Cursor<Tipo>()), tamanio(0) {}
 
 template <typename Tipo>
 NodoLista<Tipo>* LDE<Tipo>::obtener_nodo(int indice){
@@ -108,6 +120,10 @@ void LDE<Tipo>::insertar_inicio(Tipo elemento){
 
     if(tamanio == 0){
         ultimo = nuevo;
+    }
+
+    if(!cursor.obtener_nodo()){
+        cursor.apuntar(primero);
     }
 }
 
@@ -221,6 +237,75 @@ LDE<Tipo>::~LDE(){
 template <typename Tipo>
 int LDE<Tipo>::obtener_tamanio(){
     return tamanio;
+}
+
+template <typename Tipo>
+void LDE<Tipo>::insertar_cursor(Tipo elemento){
+    if(cursor.obtener_nodo() == ultimo){
+        insertar_final(elemento);
+    }
+
+    else{
+        NodoLista<Tipo>* nuevo = new NodoLista<Tipo>(elemento);
+        NodoLista<Tipo>* actual = cursor.obtener_nodo();
+
+        actual -> obtener_siguiente() -> asignar_anterior(nuevo);
+        nuevo -> asignar_siguiente(actual -> obtener_siguiente());
+        nuevo -> asignar_anterior(actual);
+        actual -> asignar_siguiente(nuevo);
+    }
+
+    tamanio++;
+}
+
+template <typename Tipo>
+void LDE<Tipo>::eliminar_cursor(){
+    NodoLista<Tipo>* actual = cursor.obtener_nodo();
+
+    if(actual == primero){
+        primero = actual -> obtener_siguiente();
+        primero -> asignar_anterior(nullptr);
+    }
+
+    else if(actual == ultimo){
+        ultimo = actual -> obtener_anterior();
+        ultimo -> asignar_siguiente(nullptr);
+    }
+
+    else{
+        actual -> obtener_anterior() -> asignar_siguiente(actual -> obtener_siguiente());
+        actual -> obtener_siguiente() -> asignar_anterior(actual -> obtener_anterior());
+    }
+
+    delete actual;
+    tamanio--;
+    actual = nullptr;
+    cursor.apuntar(primero);
+}
+
+template <typename Tipo>
+void LDE<Tipo>::siguiente(){
+    cursor.aumentar_indice();
+}
+
+template <typename Tipo>
+void LDE<Tipo>::anterior(){
+    cursor.disminuir_indice();
+}
+
+template <typename Tipo>
+void LDE<Tipo>::inicio(){
+    cursor.apuntar(primero);
+}
+
+template <typename Tipo>
+void LDE<Tipo>::final(){
+    cursor.apuntar(ultimo);
+}
+
+template <typename Tipo>
+Tipo LDE<Tipo>::elemento_cursor(){
+    return cursor.obtener_elemento();
 }
 
 #endif // LISTA_H

@@ -8,6 +8,7 @@
 - Pila
 - Cola
 - Lista Circular
+- Grafo
   
 Cada TDA se encuentra en su propia clase, con métodos y funcionalidades específicas. A continuación, se proporciona una breve descripción de cada TDA.
 
@@ -32,5 +33,8 @@ Cada TDA se encuentra en su propia clase, con métodos y funcionalidades especí
 
 - Lista Circular  
   Es una estructura de datos que representa una lista enlazada donde el último nodo apunta al primer nodo, cerrando el ciclo y formando así una estructura circular.
+
+- Grafo  
+  Es una estructura de datos que representa una colección de nodos (vértices) interconectados por aristas (arcos).
 
 *Nota: Todos los TDA están implementados como templates.

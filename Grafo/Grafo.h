@@ -26,6 +26,10 @@ class Grafo{
 
         void dfs();
 
+        int encontrar_nodo_minimo(const std::vector<int>& distancias, const std::vector<bool>& visitados);
+
+        void actualizar_distancias(int nodo_actual, std::vector<int>& distancias, const std::vector<bool>& visitados);
+
     public:
         Grafo();
 
@@ -37,7 +41,7 @@ class Grafo{
 
         void recorrer_grafo();
 
-        void calcular_caminos_minimos(int nodo_inicial);
+        void dijsktra(int nodo_inicial);
 
         ~Grafo();
 };

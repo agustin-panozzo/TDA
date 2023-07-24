@@ -89,42 +89,55 @@ void Grafo::recorrer_grafo(){
     dfs();
 }
 
-void Grafo::calcular_caminos_minimos(int vertice_inicial){
+int Grafo::encontrar_nodo_minimo(const vector<int>& distancias, const vector<bool>& visitados){
+    int min_distancia = INF;
+    int min_nodo = -1;
+
+    for(int i = 0; i < n; i++){
+        if(!visitados[i] && distancias[i] < min_distancia){
+            min_distancia = distancias[i];
+            min_nodo = i;
+        }
+    }
+
+    return min_nodo;
+}
+
+void Grafo::actualizar_distancias(int nodo_actual, vector<int>& distancias, const vector<bool>& visitados){
+    int distancia_nueva;
+
+    for(int k = 0; k < n; k++){
+        int peso = matriz_adyacencia[nodo_actual][k];
+
+        if(!visitados[k] && peso != INF){
+            distancia_nueva = distancias[nodo_actual] + peso;
+
+            if(distancia_nueva < distancias[k]){
+                distancias[k] = distancia_nueva;
+            }
+        }
+    }
+}
+
+void Grafo::dijsktra(int vertice_inicial){
     vector<int> distancias(n, INF);
     vector<bool> visitados(n, false);
 
     distancias[vertice_inicial - 1] = 0; // Distancia del nodo inicial a si mismo es 0
 
     for(int i = 0; i < n - 1; i++){
-        int nodo_actual;
-        int min_distancia = INF;
-
-        for(int j = 0; j < n; j++){ // Buscamos el nodo con la menor distancia
-            if(!visitados[j] && distancias[j] < min_distancia){
-                min_distancia = distancias[j];
-                nodo_actual = j;
-            }
+        int nodo_actual = encontrar_nodo_minimo(distancias, visitados);
+        
+        if(nodo_actual != -1){
+            visitados[nodo_actual] = true;
+            actualizar_distancias(nodo_actual, distancias, visitados);
         }
 
-        visitados[nodo_actual] = true;
+        cout << "Distancias más cortas desde el vertice " << vertice_inicial << ":" << endl;
 
-        for(int k = 0; k < n; k++){
-            int peso = matriz_adyacencia[nodo_actual][k];
-
-            if(!visitados[k] && peso != INF) {
-                int distancia_nuevo = distancias[nodo_actual] + peso;
-
-                if(distancia_nuevo < distancias[k]){
-                    distancias[k] = distancia_nuevo;
-                }
-            }
+        for(int i = 0; i < n; i++){
+            cout << "Vertice "<< i + 1 << ": " << distancias[i] << endl;
         }
-    }
-
-    cout << "Distancias más cortas desde el vertice " << vertice_inicial << ":" << endl;
-
-    for(int i = 0; i < n; i++){
-        cout << "Vertice "<< i + 1 << ": " << distancias[i] << endl;
     }
 }
 

@@ -37,6 +37,8 @@ class Grafo{
 
         void recorrer_grafo();
 
+        void calcular_caminos_minimos(int nodo_inicial);
+
         ~Grafo();
 };
 

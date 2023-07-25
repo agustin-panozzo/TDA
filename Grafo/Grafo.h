@@ -4,13 +4,13 @@
 #include <limits>
 #include <vector>
 #include <iostream>
-
-const int INF = std::numeric_limits<int>::max();
+#include "Dijkstra.h"
 
 class Grafo{
     private:
         int n;
         int** matriz_adyacencia;
+        CaminoMinimo* camino_minimo;
 
         void generar_matriz();
 
@@ -26,10 +26,6 @@ class Grafo{
 
         void dfs();
 
-        int encontrar_nodo_minimo(const std::vector<int>& distancias, const std::vector<bool>& visitados);
-
-        void actualizar_distancias(int nodo_actual, std::vector<int>& distancias, const std::vector<bool>& visitados);
-
     public:
         Grafo();
 
@@ -41,7 +37,7 @@ class Grafo{
 
         void recorrer_grafo();
 
-        void dijsktra(int nodo_inicial);
+        void usar_dijkstra(int nodo_inicial);
 
         ~Grafo();
 };

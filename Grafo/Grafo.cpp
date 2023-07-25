@@ -2,9 +2,9 @@
 
 using namespace std;
 
-Grafo::Grafo() : n(0), matriz_adyacencia(nullptr) {}
+Grafo::Grafo() : n(0), matriz_adyacencia(nullptr), camino_minimo(nullptr) {}
 
-Grafo::Grafo(int n) : n(n), matriz_adyacencia(nullptr) {
+Grafo::Grafo(int n) : n(n), matriz_adyacencia(nullptr), camino_minimo(nullptr) {
     generar_matriz();
     inicializar_matriz();
 }
@@ -89,58 +89,12 @@ void Grafo::recorrer_grafo(){
     dfs();
 }
 
-int Grafo::encontrar_nodo_minimo(const vector<int>& distancias, const vector<bool>& visitados){
-    int min_distancia = INF;
-    int min_nodo = -1;
-
-    for(int i = 0; i < n; i++){
-        if(!visitados[i] && distancias[i] < min_distancia){
-            min_distancia = distancias[i];
-            min_nodo = i;
-        }
-    }
-
-    return min_nodo;
-}
-
-void Grafo::actualizar_distancias(int nodo_actual, vector<int>& distancias, const vector<bool>& visitados){
-    int distancia_nueva;
-
-    for(int k = 0; k < n; k++){
-        int peso = matriz_adyacencia[nodo_actual][k];
-
-        if(!visitados[k] && peso != INF){
-            distancia_nueva = distancias[nodo_actual] + peso;
-
-            if(distancia_nueva < distancias[k]){
-                distancias[k] = distancia_nueva;
-            }
-        }
-    }
-}
-
-void Grafo::dijsktra(int vertice_inicial){
-    vector<int> distancias(n, INF);
-    vector<bool> visitados(n, false);
-
-    distancias[vertice_inicial - 1] = 0; // Distancia del nodo inicial a si mismo es 0
-
-    for(int i = 0; i < n - 1; i++){
-        int nodo_actual = encontrar_nodo_minimo(distancias, visitados);
-        
-        if(nodo_actual != -1){
-            visitados[nodo_actual] = true;
-            actualizar_distancias(nodo_actual, distancias, visitados);
-        }
-
-        cout << "Distancias más cortas desde el vertice " << vertice_inicial << ":" << endl;
-
-        for(int i = 0; i < n; i++){
-            cout << "Vertice "<< i + 1 << ": " << distancias[i] << endl;
-        }
-    }
+void Grafo::usar_dijkstra(int nodo_inicial){
+    camino_minimo = new Dijkstra(n, matriz_adyacencia, nodo_inicial);
+    camino_minimo -> camino_minimo();
 }
 
 Grafo::~Grafo(){
     liberar_matriz();
+    delete camino_minimo;
 }

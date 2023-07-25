@@ -8,6 +8,7 @@ class CaminoMinimo{
     protected:
         int n;
         int** matriz_adyacencia;
+        int nood_inicial;
 
     public:
         CaminoMinimo();

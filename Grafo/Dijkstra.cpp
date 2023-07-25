@@ -51,6 +51,12 @@ void Dijkstra::camino_minimo(){
     }
 
     for(int i = 0; i < n; i++){
-        cout << "Distancia del nodo " << nodo_inicial << " al nodo " << i + 1 << ": " << distancias[i] << endl;
+        if(distancias[i] == INF){
+            cout << "No hay camino del nodo " << nodo_inicial << " al nodo " << i + 1 << endl;
+        }
+
+        else{
+            cout << "Distancia del nodo " << nodo_inicial << " al nodo " << i + 1 << ": " << distancias[i] << endl;
+        }
     }
 }

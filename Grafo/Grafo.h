@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include "Dijkstra.h"
+#include "Floyd_Warshall.h"
 
 class Grafo{
     private:
@@ -38,6 +39,8 @@ class Grafo{
         void recorrer_grafo();
 
         void usar_dijkstra(int nodo_inicial);
+
+        void usar_floyd_warshall();
 
         ~Grafo();
 };

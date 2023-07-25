@@ -16,7 +16,7 @@ class Dijkstra : public CaminoMinimo{
     public:
         Dijkstra(int n, int** matriz_adyacencia, int nodo_inicial);
 
-        void camino_minimo();
+        void camino_minimo() override;
 
         ~Dijkstra() = default;
 };

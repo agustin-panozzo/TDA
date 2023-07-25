@@ -94,6 +94,11 @@ void Grafo::usar_dijkstra(int nodo_inicial){
     camino_minimo -> camino_minimo();
 }
 
+void Grafo::usar_floyd_warshall(){
+    camino_minimo = new Floyd_Warshall(n, matriz_adyacencia);
+    camino_minimo -> camino_minimo();
+}
+
 Grafo::~Grafo(){
     liberar_matriz();
     delete camino_minimo;

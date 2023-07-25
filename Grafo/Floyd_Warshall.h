@@ -13,6 +13,8 @@ class Floyd_Warshall : public CaminoMinimo {
         Floyd_Warshall(int n, int** matriz_adyacencia);
 
         void camino_minimo() override;
+
+        ~Floyd_Warshall() = default;
 };
 
 #endif // FLOYD_WARSHALL_H

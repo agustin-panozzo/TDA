@@ -99,6 +99,11 @@ void Grafo::usar_floyd_warshall(){
     camino_minimo -> camino_minimo();
 }
 
+void Grafo::usar_prim(){
+    camino_minimo = new Prim(n, matriz_adyacencia);
+    camino_minimo -> camino_minimo();
+}
+
 Grafo::~Grafo(){
     liberar_matriz();
     delete camino_minimo;

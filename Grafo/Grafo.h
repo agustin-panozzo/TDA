@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Dijkstra.h"
 #include "Floyd_Warshall.h"
+#include "Prim.h"
 
 class Grafo{
     private:
@@ -41,6 +42,8 @@ class Grafo{
         void usar_dijkstra(int nodo_inicial);
 
         void usar_floyd_warshall();
+
+        void usar_prim();
 
         ~Grafo();
 };

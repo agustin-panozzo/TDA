@@ -7,6 +7,7 @@
 #include "Dijkstra.h"
 #include "Floyd_Warshall.h"
 #include "Prim.h"
+#include "Kruskal.h"
 
 class Grafo{
     private:
@@ -44,6 +45,8 @@ class Grafo{
         void usar_floyd_warshall();
 
         void usar_prim();
+
+        void usar_kruskal();
 
         ~Grafo();
 };

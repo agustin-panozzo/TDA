@@ -38,42 +38,23 @@ void Kruskal::camino_minimo() {
     generar_aristas();
     ordenar_aristas();
 
-    vector<int> padre(n);
-    vector<int> rango(n);
+    vector<bool> visitado(n, false); // Para evitar ciclos
+    int numAristas = 0;
 
-    for(int i = 0; i < n; i++){
-        padre[i] = i;
-        rango[i] = 0;
-    }
-
-    for(size_t i = 0; i < aristas.size(); i++){
+    for(size_t i = 0; i < aristas.size(); i++) {
         int origen = aristas[i].origen;
         int destino = aristas[i].destino;
 
-        while(origen != padre[origen]){
-            origen = padre[origen];
-        }
+        if (!visitado[origen] || !visitado[destino]) {
+            visitado[origen] = true;
+            visitado[destino] = true;
 
-        while(destino != padre[destino]){
-            destino = padre[destino];
-        }
+            numAristas++;
+            cout << "Origen: " << origen + 1 << " Destino: " << destino + 1 << " Peso: " << aristas[i].peso << endl;
 
-        if(origen != destino) {
-
-            if(rango[origen] > rango[destino]){
-                padre[destino] = origen;
-            }
-
-            else {
-                padre[origen] = destino;
-
-                if(rango[origen] == rango[destino]){
-                    rango[destino]++;
-                }
+            if (numAristas == n - 1) {
+                break;
             }
         }
-
-        cout << "Origen: " << aristas[i].origen << " Destino: " << aristas[i].destino << " Peso: " << aristas[i].peso << endl;
-
     }
 }
